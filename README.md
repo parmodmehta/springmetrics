@@ -1,4 +1,4 @@
-springmetrics
+Springmetrics
 =============
 
-Spring integration with dropwizard metrics library
+Springmetrics is a spring based framework that integrates dropwiard metrics java libaray with spring based annotations
