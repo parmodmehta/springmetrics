@@ -4,8 +4,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import com.springmetrics.annotation.Timed;
 import com.springmetrics.annotation.resolver.TimerMetricsResolver;
-import com.yammer.metrics.annotation.Timed;
 import com.yammer.metrics.core.TimerContext;
 
 /**

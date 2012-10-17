@@ -7,8 +7,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.cache.interceptor.CacheAspectSupport.Invoker;
 import org.springframework.core.annotation.AnnotationUtils;
 
+import com.springmetrics.annotation.Timed;
 import com.springmetrics.annotation.resolver.TimerMetricsResolver;
-import com.yammer.metrics.annotation.Timed;
 import com.yammer.metrics.core.TimerContext;
 
 /**

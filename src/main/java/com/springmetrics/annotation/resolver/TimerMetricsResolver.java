@@ -3,8 +3,8 @@ package com.springmetrics.annotation.resolver;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
+import com.springmetrics.annotation.Timed;
 import com.yammer.metrics.Metrics;
-import com.yammer.metrics.annotation.Timed;
 import com.yammer.metrics.core.MetricName;
 import com.yammer.metrics.core.Timer;
 import com.yammer.metrics.core.TimerContext;
