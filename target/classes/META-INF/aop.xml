@@ -1,0 +1,16 @@
+<!DOCTYPE aspectj PUBLIC
+        "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+
+    <weaver>
+    </weaver>
+
+    <aspects>
+
+        <!-- weave in just this aspect -->        
+        <aspect name="com.springmetrics.aspectj.AnnotationCounterAspect"/>
+        <aspect name="com.springmetrics.aspectj.AnnotationTimedAspect"/>
+        <aspect name="com.springmetrics.aspectj.AnnotationExceptionCounterAspect"/>
+    </aspects>
+
+  </aspectj>
