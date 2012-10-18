@@ -11,7 +11,7 @@ import com.yammer.metrics.annotation.Timed;
 
 /**
  * @author pmehta
- *
+ * 
  */
 public class TimedBeanPostProcessor implements BeanPostProcessor {
 
@@ -19,12 +19,14 @@ public class TimedBeanPostProcessor implements BeanPostProcessor {
 		ClassLoader cl = bean.getClass().getClassLoader();
 		@SuppressWarnings("rawtypes")
 		Class[] interfaces = bean.getClass().getInterfaces();
-		Timed timedAnnotation = (Timed)Utils.findAnnotation(bean, Timed.class);
-		if (timedAnnotation!=null)
+		Timed timedAnnotation = (Timed) Utils.findAnnotation(bean, Timed.class);
+		if (timedAnnotation != null)
 			return Proxy.newProxyInstance(cl, interfaces, new TimedDynamicProxy(bean));
 		return bean;
 	}
 
-  public Object postProcessBeforeInitialization(Object bean, String beanName) { return bean; }
+	public Object postProcessBeforeInitialization(Object bean, String beanName) {
+		return bean;
+	}
 
 }

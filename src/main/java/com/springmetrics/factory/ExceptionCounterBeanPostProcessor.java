@@ -11,7 +11,7 @@ import com.springmetrics.proxy.Utils;
 
 /**
  * @author pmehta
- *
+ * 
  */
 public class ExceptionCounterBeanPostProcessor implements BeanPostProcessor {
 
@@ -19,12 +19,15 @@ public class ExceptionCounterBeanPostProcessor implements BeanPostProcessor {
 		ClassLoader cl = bean.getClass().getClassLoader();
 		@SuppressWarnings("rawtypes")
 		Class[] interfaces = bean.getClass().getInterfaces();
-		ExceptionCounter exceptionCounterAnnotation = (ExceptionCounter)Utils.findAnnotation(bean, ExceptionCounter.class);
-		if (exceptionCounterAnnotation!=null)
+		ExceptionCounter exceptionCounterAnnotation = (ExceptionCounter) Utils.findAnnotation(bean,
+				ExceptionCounter.class);
+		if (exceptionCounterAnnotation != null)
 			return Proxy.newProxyInstance(cl, interfaces, new ExceptionCounterDynamicProxy(bean));
 		return bean;
 	}
 
-  public Object postProcessBeforeInitialization(Object bean, String beanName) { return bean; }
-  
+	public Object postProcessBeforeInitialization(Object bean, String beanName) {
+		return bean;
+	}
+
 }
