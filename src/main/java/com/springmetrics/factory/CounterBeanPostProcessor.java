@@ -16,12 +16,11 @@ import com.springmetrics.proxy.Utils;
 public class CounterBeanPostProcessor implements BeanPostProcessor {
 
 	public Object postProcessAfterInitialization(final Object bean, final String beanName) throws BeansException {
-		ClassLoader cl = bean.getClass().getClassLoader();
-		@SuppressWarnings("rawtypes")
-		Class[] interfaces = bean.getClass().getInterfaces();
 		Counter counterAnnotation = (Counter) Utils.findAnnotation(bean, Counter.class);
 		if (counterAnnotation != null)
-			return Proxy.newProxyInstance(cl, interfaces, new CounterDynamicProxy(bean));
+			return Proxy.newProxyInstance(bean.getClass().getClassLoader(), 
+											bean.getClass().getInterfaces(), 
+											new CounterDynamicProxy(bean));
 		return bean;
 	}
 

@@ -16,12 +16,11 @@ import com.yammer.metrics.annotation.Timed;
 public class TimedBeanPostProcessor implements BeanPostProcessor {
 
 	public Object postProcessAfterInitialization(final Object bean, final String beanName) throws BeansException {
-		ClassLoader cl = bean.getClass().getClassLoader();
-		@SuppressWarnings("rawtypes")
-		Class[] interfaces = bean.getClass().getInterfaces();
 		Timed timedAnnotation = (Timed) Utils.findAnnotation(bean, Timed.class);
 		if (timedAnnotation != null)
-			return Proxy.newProxyInstance(cl, interfaces, new TimedDynamicProxy(bean));
+			return Proxy.newProxyInstance(bean.getClass().getClassLoader(), 
+											bean.getClass().getInterfaces(), 
+											new TimedDynamicProxy(bean));
 		return bean;
 	}
 
