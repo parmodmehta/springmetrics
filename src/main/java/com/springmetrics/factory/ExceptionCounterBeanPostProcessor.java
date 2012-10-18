@@ -12,7 +12,7 @@ import com.springmetrics.proxy.Utils;
  * @author pmehta
  *
  */
-public class ExceptionCounterBeanPostProcessor extends AbstractBeanPostProcessor {
+public class ExceptionCounterBeanPostProcessor implements BeanPostProcessor {
 
 	public Object postProcessAfterInitialization(final Object bean, final String beanName) throws BeansException {
 		ClassLoader cl = bean.getClass().getClassLoader();
@@ -23,4 +23,7 @@ public class ExceptionCounterBeanPostProcessor extends AbstractBeanPostProcessor
 			return Proxy.newProxyInstance(cl, interfaces, new ExceptionCounterDynamicProxy(bean));
 		return bean;
 	}
+
+  public Object postProcessBeforeInitialization(Object bean, String beanName) { return bean; }
+  
 }

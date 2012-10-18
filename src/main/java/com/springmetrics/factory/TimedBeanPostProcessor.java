@@ -12,7 +12,7 @@ import com.yammer.metrics.annotation.Timed;
  * @author pmehta
  *
  */
-public class TimedBeanPostProcessor extends AbstractBeanPostProcessor  {
+public class TimedBeanPostProcessor implements BeanPostProcessor {
 
 	public Object postProcessAfterInitialization(final Object bean, final String beanName) throws BeansException {
 		ClassLoader cl = bean.getClass().getClassLoader();
@@ -23,5 +23,7 @@ public class TimedBeanPostProcessor extends AbstractBeanPostProcessor  {
 			return Proxy.newProxyInstance(cl, interfaces, new TimedDynamicProxy(bean));
 		return bean;
 	}
+
+  public Object postProcessBeforeInitialization(Object bean, String beanName) { return bean; }
 
 }
