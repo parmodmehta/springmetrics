@@ -3,6 +3,7 @@ package com.springmetrics.factory;
 import java.lang.reflect.Proxy;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 
 import com.springmetrics.annotation.ExceptionCounter;
 import com.springmetrics.proxy.ExceptionCounterDynamicProxy;
