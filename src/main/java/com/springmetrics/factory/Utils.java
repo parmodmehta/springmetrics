@@ -1,4 +1,4 @@
-package com.springmetrics.proxy;
+package com.springmetrics.factory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -26,6 +26,11 @@ public class Utils {
 				return an;
 		}
 		return null;
+	}
+	
+	public static Annotation findAnnotation(final Object bean, final Method method, final Class<? extends Annotation> annotation) {
+		Annotation an = findAnnotationOnClass(method, annotation);
+		return an!=null ? an : findAnnotationOnInterface(method, bean.getClass(), annotation);
 	}
 
 	public static Annotation findAnnotationOnClass(final Method method, final Class<? extends Annotation> annotation) {
