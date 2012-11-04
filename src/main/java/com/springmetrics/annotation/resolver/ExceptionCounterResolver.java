@@ -14,7 +14,7 @@ public class ExceptionCounterResolver extends BaseMetricsResolver {
 
 	private com.yammer.metrics.core.Counter exceptionCounter;
 	
-	public ExceptionCounterResolver(final ExceptionCounter exceptionCounter, final Exception e, final Method m) {
+	public ExceptionCounterResolver(final ExceptionCounter exceptionCounter, final Throwable e, final Method m) {
         Class<?> klass = m.getDeclaringClass();
     	MetricName name = new MetricName(getGroup(exceptionCounter.group(), klass),
 							getType(e.getClass().getCanonicalName(), klass), 

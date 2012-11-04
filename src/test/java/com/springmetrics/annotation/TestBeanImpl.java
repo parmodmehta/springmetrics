@@ -25,18 +25,5 @@ public class TestBeanImpl implements TestBean {
 		throw new IllegalArgumentException();
 	}
 	
-	public void counterAnnotationOnInterface() {
-		// no op
-	}
-	
-	public void timedAnnotationOnInterface() {
-		// no op
-	}
-	
-	public void exceptionCounterOnInterface() {
-		// no op
-	}
-
-
 }
 

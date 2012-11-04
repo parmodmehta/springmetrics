@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:springmetrics="http://www.springmetrics.com/schema/springmetrics"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
             http://www.springframework.org/schema/beans
@@ -9,12 +10,18 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context.xsd
             http://www.springframework.org/schema/aop 
-            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+            http://www.springmetrics.com/schema/springmetrics
+            http://www.springmetrics.com/schema/springmetrics/springmetrics.xsd">
     
     <context:annotation-config />
-
-    <bean class="com.springmetrics.factory.SpringMetricsBeanPostProcessor"/> 
+    <aop:aspectj-autoproxy/>
+    <springmetrics:spring-metrics/>
     
+    <bean class="com.springmetrics.factory.CounterBeanPostProcessor"/>
+    <bean class="com.springmetrics.factory.ExceptionCounterBeanPostProcessor"/>
+    <bean class="com.springmetrics.factory.TimedBeanPostProcessor"/> 
+
     <bean id="testBean" class="com.springmetrics.annotation.TestBeanImpl" />
 
 </beans>

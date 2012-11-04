@@ -22,7 +22,7 @@ public class AnnotationsTest {
 	
 	@Autowired
 	private TestBean testBean;
-	
+
 	@Test
 	public void testCounterAnnotationOnClass() throws Exception {
 		testBean.counterAnnotationOnClass();
@@ -43,31 +43,7 @@ public class AnnotationsTest {
 			testBean.exceptionCounterOnClass(); 
 		} catch(IllegalArgumentException e) {
 			MBeanServer server = JmxUtils.locateMBeanServer();
-			assertNotNull(server.getAttribute(new ObjectName("testAnnotationGroup:type=java.lang.reflect.InvocationTargetException,name=testExceptionCounterAnnotationClass"), "Count"));
-		}
-	}
-
-	@Test
-	public void testCounterAnnotationOnInterface() throws Exception {
-		testBean.counterAnnotationOnInterface();
-		MBeanServer server = JmxUtils.locateMBeanServer();
-		assertNotNull(server.getAttribute(new ObjectName("testAnnotationGroup:type=testCounterAnnotation,name=testCounterAnnotationInterface"), "Count"));
-	}
-	
-	@Test
-	public void testTimedAnnotationOnInterface() throws Exception {
-		testBean.timedAnnotationOnInterface();
-		MBeanServer server = JmxUtils.locateMBeanServer();
-		assertNotNull(server.getAttribute(new ObjectName("testAnnotationGroup:type=typeTimedAnnotation,name=testTimedAnnotationInterface"), "Count"));
-	}
-	
-	@Test
-	public void testExceptionCounterAnnotationOnInterface() throws Exception {
-		try {
-			testBean.exceptionCounterOnInterface();
-		} catch(IllegalArgumentException e) {
-			MBeanServer server = JmxUtils.locateMBeanServer();
-			assertNotNull(server.getAttribute(new ObjectName("testAnnotationGroup:type=java.lang.reflect.InvocationTargetException,name=testExceptionCounterAnnotationInterface"), "Count"));
+			assertNotNull(server.getAttribute(new ObjectName("testAnnotationGroup:type=java.lang.IllegalArgumentException,name=testExceptionCounterAnnotationClass"), "Count"));
 		}
 	}
 
