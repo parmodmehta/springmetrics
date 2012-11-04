@@ -13,15 +13,11 @@
             http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
             http://www.springmetrics.com/schema/springmetrics
             http://www.springmetrics.com/schema/springmetrics/springmetrics.xsd">
-    
+
+    <springmetrics:spring-metrics/>
     <context:annotation-config />
     <aop:aspectj-autoproxy/>
-    <springmetrics:spring-metrics/>
     
-    <bean class="com.springmetrics.factory.CounterBeanPostProcessor"/>
-    <bean class="com.springmetrics.factory.ExceptionCounterBeanPostProcessor"/>
-    <bean class="com.springmetrics.factory.TimedBeanPostProcessor"/> 
-
     <bean id="testBean" class="com.springmetrics.annotation.TestBeanImpl" />
 
 </beans>
