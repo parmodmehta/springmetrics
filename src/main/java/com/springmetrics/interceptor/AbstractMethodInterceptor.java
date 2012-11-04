@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.springframework.aop.support.AopUtils;
 
-import com.springmetrics.annotation.Counter;
 import com.springmetrics.factory.Utils;
 
 /**
