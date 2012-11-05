@@ -8,7 +8,7 @@ import org.springframework.cache.interceptor.CacheAspectSupport.Invoker;
 import org.springframework.core.annotation.AnnotationUtils;
 
 import com.springmetrics.annotation.Timed;
-import com.springmetrics.annotation.resolver.TimerMetricsResolver;
+import com.springmetrics.annotation.resolver.TimedMetricsResolver;
 import com.yammer.metrics.core.TimerContext;
 
 /**
@@ -24,7 +24,7 @@ public aspect AnnotationTimedAspect {
 		MethodSignature methodSignature = (MethodSignature) thisJoinPoint.getSignature();
 		Method method = methodSignature.getMethod();
 		Timed annot = AnnotationUtils.findAnnotation(method, Timed.class);
-		final TimerContext context = new TimerMetricsResolver(annot, method).getTimerContext();
+		final TimerContext context = new TimedMetricsResolver(annot, method).getTimerContext();
 		Invoker aspectJInvoker = new Invoker() {
 			public Object invoke() {
 				try {

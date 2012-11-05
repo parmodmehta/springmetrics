@@ -5,7 +5,7 @@ import java.lang.annotation.Annotation;
 import org.aopalliance.intercept.MethodInvocation;
 
 import com.springmetrics.annotation.Timed;
-import com.springmetrics.annotation.resolver.TimerMetricsResolver;
+import com.springmetrics.annotation.resolver.TimedMetricsResolver;
 import com.yammer.metrics.core.TimerContext;
 
 /**
@@ -22,7 +22,7 @@ public class TimedInterceptor extends AbstractMethodInterceptor {
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		Annotation annotation = findAnnotation(invocation.getMethod(), Timed.class);
 		if (annotation!=null) {
-			TimerContext context = new TimerMetricsResolver((Timed)annotation, invocation.getMethod()).getTimerContext();
+			TimerContext context = new TimedMetricsResolver((Timed)annotation, invocation.getMethod()).getTimerContext();
 			try {
 				return invocation.proceed();
 			} finally {
